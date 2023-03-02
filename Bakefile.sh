@@ -1,5 +1,5 @@
 # shellcheck shell=bash
 
 task.release() {
-	cargo release --push-remote me -x
+	cargo release --push-remote me -x "$@"
 }
