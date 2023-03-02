@@ -14,6 +14,7 @@ pub fn get_qp_dir() -> PathBuf {
 
 pub fn assert_command(cmd: &str, args: &[&str]) {
 	let exists = match Command::new(cmd)
+		.args(args)
 		.stdout(Stdio::null())
 		.stderr(Stdio::null())
 		.spawn()
