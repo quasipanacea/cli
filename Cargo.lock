@@ -58,16 +58,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cli"
-version = "0.1.0"
-dependencies = [
- "clap",
- "directories",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "directories"
 version = "4.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -214,6 +204,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5d727cae5b39d21da60fa540906919ad737832fe0b1c165da3a34d6548c849d6"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "quazipanacea-cli"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "directories",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]

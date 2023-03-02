@@ -1,9 +1,10 @@
 [package]
-name = "cli"
+description = "A knowledge management system to solve all my personal needs."
+name = "quazipanacea-cli"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+repository = "https://github.com/quazipanacea/cli"
+license = "GPL-2.0"
 
 [dependencies]
 clap = { version = "4.1.8", features = ["derive"] }
