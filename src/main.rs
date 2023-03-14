@@ -16,5 +16,8 @@ fn main() {
 		Action::Run {} => {
 			subcommands::run();
 		}
+		Action::BuildRelease {} => {
+			subcommands::build();
+		}
 	}
 }

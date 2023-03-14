@@ -12,22 +12,30 @@ pub fn get_qp_dir() -> PathBuf {
 	qp_dir
 }
 
-pub fn assert_command(cmd: &str, args: &[&str]) {
-	let exists = match Command::new(cmd)
+pub fn run_cmd(cmd: &str, args: &[&str]) -> bool {
+	let status = Command::new(cmd)
 		.args(args)
 		.stdout(Stdio::null())
 		.stderr(Stdio::null())
 		.spawn()
-	{
-		Ok(_) => true,
-		Err(err) => {
-			if let NotFound = err.kind() {
-				false
+		.unwrap()
+		.wait()
+		.unwrap();
+
+	match status.code() {
+		Some(code) => {
+			if code == 0 {
+				true
 			} else {
-				panic!("{}", err);
+				false
 			}
 		}
-	};
+		None => false,
+	}
+}
+
+pub fn assert_command(cmd: &str, args: &[&str]) {
+	let exists = run_cmd(cmd, args);
 
 	if !exists {
 		eprintln!("{}", String::from("Command not found: ") + cmd);
