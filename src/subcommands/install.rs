@@ -1,9 +1,10 @@
 use std::{env, fs};
 
-use crate::util::{get_qp_dir, run};
+use crate::util::{get_qp_dir, run_cmd};
 
 pub fn install() {
 	let qp_dir = get_qp_dir();
+	println!("Quazipanacea directory: {}", qp_dir.to_str().unwrap());
 
 	if qp_dir.exists() {
 		fs::remove_dir_all(&qp_dir).unwrap();
@@ -13,7 +14,7 @@ pub fn install() {
 
 	// common
 	fs::create_dir_all("common").unwrap();
-	run(
+	run_cmd(
 		"curl",
 		&[
 			"-LsSo",
@@ -21,11 +22,11 @@ pub fn install() {
 			"https://github.com/quazipanacea/common/archive/refs/tags/nightly.tar.gz",
 		],
 	);
-	run("tar", &["-C", "common", "-xf", "./common/build.tar.gz"]);
+	run_cmd("tar", &["-C", "common", "-xf", "./common/build.tar.gz"]);
 
 	// server
 	fs::create_dir_all("server-deno").unwrap();
-	run(
+	run_cmd(
 		"curl",
 		&[
 			"-LsSo",
@@ -33,14 +34,14 @@ pub fn install() {
 			"https://github.com/quazipanacea/server-deno/releases/download/nightly/build.tar.gz",
 		],
 	);
-	run(
+	run_cmd(
 		"tar",
 		&["-C", "server-deno", "-xf", "./server-deno/build.tar.gz"],
 	);
 
 	// client
 	fs::create_dir_all("client-web").unwrap();
-	run(
+	run_cmd(
 		"curl",
 		&[
 			"-LsSo",
@@ -48,7 +49,7 @@ pub fn install() {
 			"https://github.com/quazipanacea/client-web/releases/download/nightly/build.tar.gz",
 		],
 	);
-	run(
+	run_cmd(
 		"tar",
 		&["-C", "client-web", "-xf", "client-web/build.tar.gz"],
 	);

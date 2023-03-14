@@ -55,19 +55,23 @@ pub fn run_cmd_silent(cmd: &str, args: &[&str]) -> bool {
 }
 
 pub fn assert_command(cmd: &str, args: &[&str]) {
-	let exists = run_cmd(cmd, args);
-
-	if !exists {
-		eprintln!("{}", String::from("Command not found: ") + cmd);
-		exit(1);
-	}
-}
-
-pub fn run(cmd: &str, args: &[&str]) {
-	Command::new(cmd)
+	let a = Command::new(cmd)
 		.args(args)
-		.spawn()
-		.unwrap()
-		.wait()
-		.unwrap();
+		.stdout(Stdio::null())
+		.stderr(Stdio::null())
+		.spawn();
+
+	match a {
+		Err(_) => {
+			eprintln!("Failed to run command: {cmd}");
+			exit(1);
+		}
+		Ok(mut b) => match &b.wait() {
+			Err(_) => {
+				eprintln!("Failed to run command: {cmd}");
+				exit(1);
+			}
+			Ok(_) => {}
+		},
+	}
 }
