@@ -15,6 +15,26 @@ pub fn get_qp_dir() -> PathBuf {
 pub fn run_cmd(cmd: &str, args: &[&str]) -> bool {
 	let status = Command::new(cmd)
 		.args(args)
+		.spawn()
+		.unwrap()
+		.wait()
+		.unwrap();
+
+	match status.code() {
+		Some(code) => {
+			if code == 0 {
+				true
+			} else {
+				false
+			}
+		}
+		None => false,
+	}
+}
+
+pub fn run_cmd_silent(cmd: &str, args: &[&str]) -> bool {
+	let status = Command::new(cmd)
+		.args(args)
 		.stdout(Stdio::null())
 		.stderr(Stdio::null())
 		.spawn()
