@@ -4,7 +4,7 @@ use crate::util::{get_qp_dir, run_cmd};
 
 pub fn install() {
 	let qp_dir = get_qp_dir();
-	println!("Quazipanacea directory: {}", qp_dir.to_str().unwrap());
+	println!("Quasipanacea directory: {}", qp_dir.to_str().unwrap());
 
 	if qp_dir.exists() {
 		fs::remove_dir_all(&qp_dir).unwrap();
@@ -19,7 +19,7 @@ pub fn install() {
 		&[
 			"-LsSo",
 			"common/build.tar.gz",
-			"https://github.com/quazipanacea/common/archive/refs/tags/nightly.tar.gz",
+			"https://github.com/quasipanacea/common/archive/refs/tags/nightly.tar.gz",
 		],
 	);
 	run_cmd("tar", &["-C", "common", "-xf", "./common/build.tar.gz"]);
@@ -31,7 +31,7 @@ pub fn install() {
 		&[
 			"-LsSo",
 			"server-deno/build.tar.gz",
-			"https://github.com/quazipanacea/server-deno/releases/download/nightly/build.tar.gz",
+			"https://github.com/quasipanacea/server-deno/releases/download/nightly/build.tar.gz",
 		],
 	);
 	run_cmd(
@@ -46,7 +46,7 @@ pub fn install() {
 		&[
 			"-LsSo",
 			"client-web/build.tar.gz",
-			"https://github.com/quazipanacea/client-web/releases/download/nightly/build.tar.gz",
+			"https://github.com/quasipanacea/client-web/releases/download/nightly/build.tar.gz",
 		],
 	);
 	run_cmd(

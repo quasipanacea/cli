@@ -1,9 +1,9 @@
 [package]
 description = "A knowledge management system to solve all my personal needs."
-name = "quazipanacea-cli"
+name = "quasipanacea-cli"
 version = "0.1.2"
 edition = "2021"
-repository = "https://github.com/quazipanacea/cli"
+repository = "https://github.com/quasipanacea/cli"
 license = "GPL-2.0"
 
 [dependencies]
