@@ -11,8 +11,8 @@ pub fn build() {
 
 	let current_dir = env::current_dir().unwrap();
 
-	if current_dir.file_name().unwrap() != "repos" {
-		eprintln!("Most be in directory: init/repos");
+	if current_dir.file_name().unwrap() != "repositories" {
+		eprintln!("Most be in directory: init/repositories");
 		exit(1);
 	}
 
