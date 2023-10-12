@@ -9,7 +9,7 @@ pub fn run() {
 	}
 	assert_command("deno", &["--version"]);
 
-	let deno_file = qp_dir.join("server-deno/output/build/bundle.js");
+	let deno_file = qp_dir.join("server/output/build/bundle.js");
 	let common_dir = qp_dir.join("common/common-nightly");
 	let public_dir = qp_dir.join("client-web/output/dist");
 

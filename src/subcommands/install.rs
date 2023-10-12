@@ -25,18 +25,18 @@ pub fn install() {
 	run_cmd("tar", &["-C", "common", "-xf", "./common/build.tar.gz"]);
 
 	// server
-	fs::create_dir_all("server-deno").unwrap();
+	fs::create_dir_all("server").unwrap();
 	run_cmd(
 		"curl",
 		&[
 			"-LsSo",
-			"server-deno/build.tar.gz",
-			"https://github.com/quasipanacea/server-deno/releases/download/nightly/build.tar.gz",
+			"server/build.tar.gz",
+			"https://github.com/quasipanacea/server/releases/download/nightly/build.tar.gz",
 		],
 	);
 	run_cmd(
 		"tar",
-		&["-C", "server-deno", "-xf", "./server-deno/build.tar.gz"],
+		&["-C", "server", "-xf", "./server/build.tar.gz"],
 	);
 
 	// client

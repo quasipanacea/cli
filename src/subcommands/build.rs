@@ -32,9 +32,9 @@ pub fn build() {
 	}
 	if ! run_cmd_silent(
 		"bash",
-		&["-c", "cd ./server-deno && git diff-index --quiet HEAD -- && git ls-files --exclude-standard --others"],
+		&["-c", "cd ./server && git diff-index --quiet HEAD -- && git ls-files --exclude-standard --others"],
 	) {
-		eprintln!("Unstaged and untracked changes in 'server-deno'. Exiting");
+		eprintln!("Unstaged and untracked changes in 'server'. Exiting");
 		exit(1);
 	}
 
@@ -42,6 +42,6 @@ pub fn build() {
 	run_cmd("bash", &["-c", "cd ./client-web && ./bake release-nightly"]);
 	run_cmd(
 		"bash",
-		&["-c", "cd ./server-deno && ./bake release-nightly"],
+		&["-c", "cd ./server && ./bake release-nightly"],
 	);
 }
